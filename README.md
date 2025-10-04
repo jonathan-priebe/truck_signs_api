@@ -14,7 +14,7 @@
 
 ## 📚 Table of Contents
 
-- [🛒 Description](#description)
+- [🛒 Description](##description)
   - [⚙️ Settings](#️settings)
   - [🧩 Models Overview](#models-overview)
   - [🔍 Views](#views)
