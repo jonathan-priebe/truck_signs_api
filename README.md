@@ -12,6 +12,12 @@
 
 ---
 
+## Project Handover  
+
+📄 [Truck Signs API Checkliste PDF](<./Truck Signs API Checkliste.pdf>)
+
+---
+
 ## 📚 Table of Contents
 
 - [🛒 Description](#-description)
@@ -141,6 +147,7 @@ docker build -t test-truck .
 ```bash
 docker run -d \
   --name db-truck \
+  --restart on-failure \
   --network trucknet \
   -e POSTGRES_USER=YOUR_DB_USER \
   -e POSTGRES_PASSWORD=YOUR_DB_PASSWORD \
@@ -154,6 +161,7 @@ docker run -d \
 ```bash
 docker run -p 8020:8000 -d \
   --name truck-sings \
+  --restart on-failure \
   --network trucknet \
   -e DJANGO_SUPERUSER_USERNAME=YOUR_BACKEND_USER \
   -e DJANGO_SUPERUSER_PASSWORD=YOUR_BACKEND_PASSWORD \
