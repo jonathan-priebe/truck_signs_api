@@ -14,15 +14,15 @@
 
 ## 📚 Table of Contents
 
-- [🛒 Description](##description)
-  - [⚙️ Settings](#️settings)
-  - [🧩 Models Overview](#models-overview)
-  - [🔍 Views](#views)
-- [🚀 Installation (Docker)](#installation-docker)
-- [🖼️ Screenshots](#️screenshots)
-  - [📱 Mobile View](#mobile-view)
-  - [💻 Desktop View](#desktop-view)
-- [🔗 Useful Links](#useful-links)
+- [🛒 Description](#-description)
+  - [⚙️ Settings](#️-settings)
+  - [🧩 Models Overview](#-models-overview)
+  - [🔍 Views](#-views)
+- [🚀 Installation (Docker)](#-installation-docker)
+- [🖼️ Screenshots](#️-screenshots)
+  - [📱 Mobile View](#-mobile-view)
+  - [💻 Desktop View](#-desktop-view)
+- [🔗 Useful Links](#-useful-links)
 
 ---
 
