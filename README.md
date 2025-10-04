@@ -18,7 +18,10 @@
   - [⚙️ Settings](#️-settings)
   - [🧩 Models Overview](#-models-overview)
   - [🔍 Views](#-views)
-- [🚀 Installation (Docker)](#-installation-docker)
+- [🚀 Quickstart](#-quickstart)
+  - [🛠️ Preparing the Docker Image](#-preparing-the-docker-image)
+  - [🐳 How to Build the Docker Image](#-how-to-build-the-docker-image)
+  - [⚙️ Setup the Rest](#-setup-the-rest)
 - [🖼️ Screenshots](#️-screenshots)
   - [📱 Mobile View](#-mobile-view)
   - [💻 Desktop View](#-desktop-view)
@@ -66,8 +69,10 @@ Custom views include:
 
 ---
 
-## 🚀 Installation (Docker)
+## 🚀 Quickstart
 
+
+### 🛠️ Preparing the Docker Image
 1. Clone the repo
 
 ```bash
@@ -120,12 +125,15 @@ docker volume create truck-sing-api-db
 docker volume create truck-sing-api-api
 docker network create trucknet
 ```
+### 🐳 How to Build the Docker Image
 
-1. Build the Django image
+To build the Django backend image locally, run:
 
 ```bash
 docker build -t test-truck .
 ```
+
+### ⚙️ Setup the Rest
 
 1. Start PostgreSQL (Postgres 13)
 
