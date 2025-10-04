@@ -166,9 +166,6 @@ __NOTE:__ To create Truck vinyls with Truck logos in them, first create the __Ca
 
 ### 🖼️ Screenshots
 
-```markdown
-## 🖼️ Screenshots
-
 ### 📱 Mobile View
 
 <div align="center">
