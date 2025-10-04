@@ -19,9 +19,10 @@
   - [🧩 Models Overview](#-models-overview)
   - [🔍 Views](#-views)
 - [🚀 Quickstart](#-quickstart)
-  - [🛠️ Preparing the Docker Image](#-preparing-the-docker-image)
+  - [🛠️ Preparing the Docker Image](#️-preparing-the-docker-image)
+    - [🚦 Usage](#-usage)
   - [🐳 How to Build the Docker Image](#-how-to-build-the-docker-image)
-  - [⚙️ Setup the Rest](#-setup-the-rest)
+  - [⚙️ Setup the Rest](#️-setup-the-rest)
 - [🖼️ Screenshots](#️-screenshots)
   - [📱 Mobile View](#-mobile-view)
   - [💻 Desktop View](#-desktop-view)
@@ -79,7 +80,7 @@ Custom views include:
 git clone https://github.com/jonathan-priebe/truck_signs_api.git
 cd truck_signs_api
 ```
-
+#### 🚦 Usage
 1. Configure the environment variables.
     1. Copy the content of the example env file that is inside the truck_signs_designs folder into a .env file:
         ```bash
@@ -151,7 +152,7 @@ docker run -d \
 1. Start the Django API
 
 ```bash
-docker run -p 8000:8000 -d \
+docker run -p 8020:8000 -d \
   --name truck-sings \
   --network trucknet \
   -e DJANGO_SUPERUSER_USERNAME=YOUR_BACKEND_USER \
@@ -160,7 +161,7 @@ docker run -p 8000:8000 -d \
   -v truck-sing-api-api:/app \
   test-truck:latest
 ```
-  - Configure these to access your Backend on [localhost:8000/admin](http://localhost:8000/admin)
+  - Configure these to access your Backend on [localhost:8020/admin](http://localhost:8020/admin)
     - YOUR_BACKEND_USER
     - YOUR_BACKEND_PASSWORD
     - YOUR_BACKEND_EMAIL
