@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,8 +25,8 @@ TEMPLATES_DIR = os.path.join(ROOT_BASE_DIR,'templates')
 
 
 
-
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',]
+load_dotenv()
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', os.getenv("IP_ADDR")]
 
 
 # Application definition
