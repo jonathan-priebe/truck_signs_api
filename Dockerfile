@@ -1,13 +1,9 @@
 # Python Image for Project
-FROM python:3.8-buster
+FROM python:3.8-slim
 
-# Switch to archive mirror for Buster & Install netcat and build tools
-RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list \
- && sed -i 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list \
- && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until \
- && apt-get update \
- && apt-get install -y --no-install-recommends \
-    netcat \
+# Install netcat and build tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    netcat-openbsd \
     gcc \
     build-essential \
     python3-dev \
@@ -19,11 +15,10 @@ WORKDIR /app
 # Copie Project files
 COPY . /app
 
-# Install dependencies
-RUN python -m pip install --no-cache-dir -r requirements.txt
-
-# Make entrypoint.sh executable
-RUN chmod +x /app/entrypoint.sh
+# Install dependencies & entrypoint.sh executable
+RUN python -m pip install --no-cache-dir -r requirements.txt && \
+    chmod +x /app/entrypoint.sh && \
+    mkdir -p /app/staticfiles
 
 # Expose Port
 EXPOSE 8000

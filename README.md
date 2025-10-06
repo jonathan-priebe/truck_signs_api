@@ -26,9 +26,9 @@
   - [🔍 Views](#-views)
 - [🚀 Quickstart](#-quickstart)
   - [🛠️ Preparing the Docker Image](#️-preparing-the-docker-image)
-    - [🚦 Usage](#-usage)
   - [🐳 How to Build the Docker Image](#-how-to-build-the-docker-image)
   - [⚙️ Setup the Rest](#️-setup-the-rest)
+- [🚦 Usage](#-usage)
 - [🖼️ Screenshots](#️-screenshots)
   - [📱 Mobile View](#-mobile-view)
   - [💻 Desktop View](#-desktop-view)
@@ -86,44 +86,12 @@ Custom views include:
 git clone https://github.com/jonathan-priebe/truck_signs_api.git
 cd truck_signs_api
 ```
-#### 🚦 Usage
-1. Configure the environment variables.
-    1. Copy the content of the example env file that is inside the truck_signs_designs folder into a .env file:
-        ```bash
-        cd truck_signs_designs/settings
-        cp simple_env_config.env .env
-        ```
-    1. The new .env file should contain all the environment variables necessary to run all the django app in all the environments. However, the only needed variables for the development environment to run are the following:
-        ```bash
-        SECRET_KEY
-        IP_ADDR
-        DB_NAME
-        DB_USER
-        DB_PASSWORD
-        DB_HOST
-        DB_PORT
-        STRIPE_PUBLISHABLE_KEY
-        STRIPE_SECRET_KEY
-        EMAIL_HOST_USER
-        EMAIL_HOST_PASSWORD
-        ```
-    1. For the database, the default configurations should be:
-        ```bash
-        IP_ADDR=YOUR_IP
-        DB_NAME=YOUR_DB_NAME
-        DB_USER=YOUR_DB_USER
-        DB_PASSWORD=YOUR_DB_PASSWORD
-        DB_HOST=localhost
-        DB_PORT=5432
-        ```
-    1. The SECRET_KEY is the django secret key. To generate a new one see: [Stackoverflow Link](https://stackoverflow.com/questions/41298963/is-there-a-function-for-generating-settings-secret-key-in-django)
 
-    1. **NOTE: not required for exercise**<br/>The STRIPE_PUBLISHABLE_KEY and the STRIPE_SECRET_KEY can be obtained from a developer account in [Stripe](https://stripe.com/). 
-        - To retrieve the keys from a Stripe developer account follow the next instructions:
-            1. Log in into your Stripe developer account (stripe.com) or create a new one (stripe.com > Sign Up). This should redirect to the account's Dashboard.
-            1. Go to Developer > API Keys, and copy both the Publishable Key and the Secret Key.
-
-    1. The EMAIL_HOST_USER and the EMAIL_HOST_PASSWORD are the credentials to send emails from the website when a client makes a purchase. This is currently disable, but the code to activate this can be found in views.py in the create order view as comments. Therefore, any valid email and password will work.
+1. Copy and Configure the content of the example env file that is inside the truck_signs_designs folder into a .env file:
+```bash
+cd truck_signs_designs/settings
+cp simple_env_config.env .env
+```
 
 1. Create volumes and network
 
@@ -176,8 +144,56 @@ docker run -p 8020:8000 -d \
 
 1. Congratulations 👍 !!! The App should be running in [localhost:8000/admin](http://localhost:8000/admin)
 
+## 🚦 Usage
+1. Configure the environment variables.
+    1. The new .env file should contain all the environment variables necessary to run all the django app in all the environments. However, the only needed variables for the development environment to run are the following:
+        ```bash
+        SECRET_KEY
+        IP_ADDR
+        DB_NAME
+        DB_USER
+        DB_PASSWORD
+        DB_HOST
+        DB_PORT
+        STRIPE_PUBLISHABLE_KEY
+        STRIPE_SECRET_KEY
+        EMAIL_HOST_USER
+        EMAIL_HOST_PASSWORD
+        ```
+    1. For the database, the default configurations should be:
+        ```bash
+        IP_ADDR=YOUR_IP
+        DB_NAME=YOUR_DB_NAME
+        DB_USER=YOUR_DB_USER
+        DB_PASSWORD=YOUR_DB_PASSWORD
+        DB_HOST=localhost
+        DB_PORT=5432
+        ```
+    1. To start the Django API on DEBUG-Mode add the DEBUG=true:
+        ```bash
+        docker run -p 8020:8000 -d \
+          --name truck-sings \
+          --restart on-failure \
+          --network trucknet \
+          -e DEBUG=true \
+          -e DJANGO_SUPERUSER_USERNAME=YOUR_BACKEND_USER \
+          -e DJANGO_SUPERUSER_PASSWORD=YOUR_BACKEND_PASSWORD \
+          -e DJANGO_SUPERUSER_EMAIL=YOUR_BACKEND_EMAIL \
+          -v truck-sing-api-api:/app \
+          test-truck:latest
+        ```
 
-__NOTE:__ To create Truck vinyls with Truck logos in them, first create the __Category__ Truck Sign, and then the __Product__ (can have any name). This is to make sure the frontend retrieves the Truck vinyls for display in the Product Grid as it only fetches the products of the category Truck Sign.
+    1. The SECRET_KEY is the django secret key. To generate a new one see: [Stackoverflow Link](https://stackoverflow.com/questions/41298963/is-there-a-function-for-generating-settings-secret-key-in-django)
+
+    1. **NOTE: not required for exercise**<br/>The STRIPE_PUBLISHABLE_KEY and the STRIPE_SECRET_KEY can be obtained from a developer account in [Stripe](https://stripe.com/). 
+        - To retrieve the keys from a Stripe developer account follow the next instructions:
+            1. Log in into your Stripe developer account (stripe.com) or create a new one (stripe.com > Sign Up). This should redirect to the account's Dashboard.
+            1. Go to Developer > API Keys, and copy both the Publishable Key and the Secret Key.
+
+    1. The EMAIL_HOST_USER and the EMAIL_HOST_PASSWORD are the credentials to send emails from the website when a client makes a purchase. This is currently disable, but the code to activate this can be found in views.py in the create order view as comments. Therefore, any valid email and password will work.
+
+> [!NOTE]  
+> To create Truck vinyls with Truck logos in them, first create the __Category__ Truck Sign, and then the __Product__ (can have any name). This is to make sure the frontend retrieves the Truck vinyls for display in the Product Grid as it only fetches the products of the category Truck Sign.
 
 ---
 

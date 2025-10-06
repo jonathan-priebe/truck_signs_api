@@ -26,8 +26,7 @@ TEMPLATES_DIR = os.path.join(ROOT_BASE_DIR,'templates')
 
 
 load_dotenv()
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', os.getenv("IP_ADDR")]
-
+ALLOWED_HOSTS = os.getenv("IP_ADDR").split(",")
 
 # Application definition
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'truck_signs_designs.urls'
 
