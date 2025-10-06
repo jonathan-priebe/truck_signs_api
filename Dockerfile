@@ -17,8 +17,7 @@ COPY . /app
 
 # Install dependencies & entrypoint.sh executable
 RUN python -m pip install --no-cache-dir -r requirements.txt && \
-    chmod +x /app/entrypoint.sh && \
-    mkdir -p /app/staticfiles
+    chmod +x /app/entrypoint.sh
 
 # Expose Port
 EXPOSE 8000
